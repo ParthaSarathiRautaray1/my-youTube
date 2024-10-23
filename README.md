@@ -69,4 +69,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+# My YouTube Clone
 
+A modern YouTube clone built with React that implements core YouTube functionalities.
+
+# My YouTube Clone
+
+A modern YouTube clone built with React that implements core YouTube functionalities.
+
+
+## Project Structure
+```jsx
+Root
+├── Head
+└── Body
+    ├── Sidebar(left side)
+    │   └── MenuItems
+    └── MainContainer(Right side)
+        ├── ButtonList
+        └── VideoContainer
+            └── VideoCard
