@@ -89,3 +89,9 @@ Root
         ├── ButtonList
         └── VideoContainer
             └── VideoCard
+
+
+## Redux Toolkit
+
+# Create a Store -> ConfigureStore -> export Store
+# Create a Slice -> CreateSlice -> Give Name , initialState , reducers -> export Slice
