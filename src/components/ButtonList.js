@@ -1,9 +1,17 @@
 import React from 'react'
+import Button from './Button'
+
+const List = ["All" , "Live" , "Gaming"]
 
 const ButtonList = () => {
   return (
-    <div>
-      ButtonList component is inside MainContainer component
+    <div className='flex'>
+      <Button name="All" />
+      <Button name="Gaming"/>
+      <Button name="Songs"/>
+      <Button name="Live"/>
+      <Button name="Cricket"/>
+      <Button name="News"/>
     </div>
   )
 }
