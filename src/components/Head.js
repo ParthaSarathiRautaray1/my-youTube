@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleMenu } from '../utils/appSlice'
+import { YOUTUBE_SEARCH_API } from '../utils/constant'
 
 
 const Head = () => {
+
+    const [searchQuery , setSearchQuery] = useState("")
+
+    const [suggestion , setSuggestion] = useState([])
+
+    const [showSuggestion , setShowSuggestion] = useState(false)
+    
+    
+    useEffect(()=>{
+
+        const timer = setTimeout(() => getSearchSuggestions(), 200 ) 
+        return () =>{
+            clearTimeout(timer)
+        }
+
+        
+
+    },[searchQuery])
+
+
+
+    const getSearchSuggestions = async () => {
+        console.log("api call-" + searchQuery);
+        
+        const data = await fetch(YOUTUBE_SEARCH_API + searchQuery)
+        const json = await data.json()
+        setSuggestion(json[1])
+        //console.log(json[1]); //contain suggestion in a format of array having 5 suggestion
+        
+    }
+    
      
 
     // toggleMenuHandler
@@ -25,22 +57,54 @@ const Head = () => {
                 src='https://tse3.mm.bing.net/th?id=OIP.Au0_7mpqZMtQeoRL4iFkqAHaHa&pid=Api&P=0&h=180' 
             />
 
+            <a href='/'>
             <img  
                 className='h-10 mx-2'
                 alt="youtubeLogo"
                 src="https://tse1.mm.bing.net/th?id=OIP.0_aOiO4Dndju46KWX82BJgHaFX&pid=Api&P=0&h=180"
             />
+
+            </a>
            
         </div>
 
         {/* Search bar middle part */}
 
         <div className='col-span-10 px-96'>
-            <input className='w-1/2 border border-gray-500 p-2 rounded-l-full' 
-                type="text"
-                placeholder="Search" />
-            <button className='border border-gray-500 p-2 font-bold rounded-r-full
-            '>Search</button>
+            <div>
+                <input className=' px-5 w-1/2 border border-gray-500 p-2 rounded-l-full' 
+                    type="text"
+                    placeholder="Search"
+                    value={searchQuery}
+                    onChange={(event) => {
+                        setSearchQuery(event.target.value)
+                    }}
+                    onFocus={() => setShowSuggestion(true)}
+                    onBlur={() => setShowSuggestion(false)}
+                    
+                    />
+                
+                <button className='border border-gray-500 p-2 font-bold rounded-r-full
+                '>Search</button>
+
+            </div>
+{/* showing suggestion */}
+
+
+            {showSuggestion && (<div className='absolute  py-2 px-5 w-96 rounded-md bg-white border border-gray-400'>
+                <ul>
+                    {suggestion.map((s) => {
+                        return <li key={s} 
+                            className='py-3 px-2 shadow-sm hover:bg-gray-100 hover:rounded-md'>
+                                {s}
+                        </li>
+                    })}
+                    
+
+                </ul>
+            </div>
+            )}
+            
         </div>
 
         {/* userlogo right part */}
