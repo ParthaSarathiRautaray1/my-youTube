@@ -25,8 +25,9 @@ const Head = () => {
                 src='https://tse3.mm.bing.net/th?id=OIP.Au0_7mpqZMtQeoRL4iFkqAHaHa&pid=Api&P=0&h=180' 
             />
 
-            <img className='h-10 mx-2'
-                 alt="youtubeLogo"
+            <img  
+                className='h-10 mx-2'
+                alt="youtubeLogo"
                 src="https://tse1.mm.bing.net/th?id=OIP.0_aOiO4Dndju46KWX82BJgHaFX&pid=Api&P=0&h=180"
             />
            
