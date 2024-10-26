@@ -5,6 +5,7 @@ import { YOUTUBE_SEARCH_API } from '../utils/constant'
 import { cacheResults } from '../utils/searchSlice'
 
 
+
 const Head = () => {
 
     const [searchQuery , setSearchQuery] = useState("")
@@ -42,7 +43,7 @@ const Head = () => {
     const getSearchSuggestions = async () => {
         console.log("api call-" + searchQuery);
         
-        const data = await fetch(YOUTUBE_SEARCH_API + searchQuery)
+        const data = await fetch(YOUTUBE_SEARCH_API + searchQuery ,{})
         const json = await data.json()
         setSuggestion(json[1])
         //console.log(json[1]); //contain suggestion in a format of array having 5 suggestion
@@ -63,6 +64,11 @@ const Head = () => {
     const toggleMenuHandler = () =>{
         dispatch(toggleMenu())
     }
+
+
+    
+    // Update the suggestion list rendering:
+
 
   return (
     <div className='grid grid-flow-col p-5 m-2 shadow-lg'>
